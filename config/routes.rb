@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get 'auth_user'
       get 'login'
+      delete 'logout'
     end
   end
 end

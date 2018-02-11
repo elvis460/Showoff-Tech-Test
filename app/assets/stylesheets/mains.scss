@@ -6,3 +6,44 @@
 	background-color: #3f729b;
 	border-color: rgba(0,0,0,0.2);
 }
+
+.login-wrap{
+  margin: 25vh auto 0;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-align: center;
+}
+
+.logo_img{
+	padding: 5%;
+}
+
+.nav-user-pic{
+	display: inline-block !important;
+}
+
+.navbar-brand{
+	color: #000 !important;
+}
+.navbar-right{
+	float: right !important;
+}
+
+.photo-group{
+	border-radius: 5%;
+}
+
+.instagram_img{
+  max-height:250px;
+  width: 100%;
+  height: auto;
+}
+
+.dropdown-rwd {
+  min-width: 100px !important;
+  border: none !important;
+  border-radius: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-clip: none !important;
+}

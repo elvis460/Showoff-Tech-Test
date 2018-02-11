@@ -1,0 +1,50 @@
+<%= render 'partial/header' %>
+
+<!-- show instagram photos -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <% @photos.each do |photo| %>
+        <div class="col-md-4">
+          <section class="panel photo-group">
+            <div class="text-center" style="margin-top: 1%; height:250px; max-height: 250px">
+              <%case photo['type']%>
+                <%when "video"%>
+              <!-- video source -->
+                  <video width="100%" height="250px" controls>
+                    <source src="<%=photo['videos']['standard_resolution']['url']%>" type="video/mp4">
+                  </video>
+              <!-- mulitiple images souces -->
+                <%when "carousel"%>
+                  <div id="<%=photo['created_time']%>" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner instagram_img">
+                      <% photo['carousel_media'].each_with_index do |image, index|%>
+                          <%if index == 0%>
+                            <div class="item active">
+                          <%else%>
+                            <div class="item">
+                          <%end%>
+                            <img class="instagram_img" src="<%=image['images']['standard_resolution']['url']%>">
+                          </div>
+                      <%end%>
+                    </div>
+                    <a class="left carousel-control" href="#<%=photo['created_time']%>" data-slide="prev">
+                      <span class="glyphicon glyphicon-chevron-left"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#<%=photo['created_time']%>" data-slide="next">
+                      <span class="glyphicon glyphicon-chevron-right"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                  </div>
+              <!-- one image source -->
+                <%when "image"%>
+                  <img class="instagram_img" src="<%=photo['images']['standard_resolution']['url']%>" alt="image">
+              <%end%>
+            </div>
+          </section>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</div>

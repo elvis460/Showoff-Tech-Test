@@ -16,3 +16,33 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+
+*{
+	margin: 0
+}
+
+body{
+	height: 100%;
+	background-color: #F6F6F6;
+}
+
+// override nav border-radius in bootstrap
+nav{
+	background-color: #fff !important;
+	border: none !important;
+	border-radius: 0px;
+	@media screen and (min-width: 768px){
+	    border-radius: 0px !important;
+	}
+}
+
+a{
+	text-decoration: none !important;
+	text-align: center !important;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: 100%;
+}
+

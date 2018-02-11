@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <img class="img-rounded nav-user-pic" src="https://www.jobs.ie/logos/-2722199.png" alt="Showoff_logo" width="30" height="30">
+      TechTest
+    </a>
+    <div class="dropdown show navbar-brand navbar-right">
+
+      <a class="dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="img-circle nav-user-pic" src="<%=@user_info['profile_picture']%>" alt="user_profile_picture" width="30" height="30"> 
+        <%=@user_info['full_name']%>
+      </a>
+      <div class="dropdown-menu dropdown-rwd" aria-labelledby="dropdownMenuLink">
+        <%= link_to 'Logout' , logout_mains_path , method: :delete, class: ['btn btn-block btn-danger'] %>
+      </div>
+    </div>
+  </div>
+</nav>

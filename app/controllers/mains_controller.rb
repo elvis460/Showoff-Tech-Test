@@ -5,9 +5,12 @@ class MainsController < ApplicationController
     # get instagram photos
     begin 
       url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{user_access_token}"
-      res = RestClient.get url
-      render json: res
-      return
+      instagram_response = JSON.parse(RestClient.get url)
+      @photos = instagram_response['data']
+      @user_info = session[:user_info]
+      # TODO: handle
+      unless @photos.present?
+      end
     rescue RestClient::ExceptionWithResponse => err
       err_response = err.response
       # If access_token expired
@@ -21,6 +24,12 @@ class MainsController < ApplicationController
     redirect_to root_path if user_access_token.present?
     @client_id = Settings['instagram.client_id']
     @redirect_uri =  Settings['instagram.redirect_uri']
+  end
+
+  def logout
+    redirect_to root_path unless user_access_token.present?
+    reset_session
+    redirect_to login_mains_path
   end
 
   def auth_user
