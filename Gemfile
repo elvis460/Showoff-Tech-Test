@@ -41,6 +41,8 @@ gem "rails-settings-cached"
 gem 'bootstrap-sass'
 # font-awesome
 gem "font-awesome-rails"
+# jquery
+gem 'jquery-rails'
 # rspec
 gem 'rspec-rails'
 
