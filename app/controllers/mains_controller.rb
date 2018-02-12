@@ -6,11 +6,14 @@ class MainsController < ApplicationController
     begin 
       url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{user_access_token}"
       instagram_response = JSON.parse(RestClient.get url)
-      @photos = instagram_response['data']
-      @user_info = session[:user_info]
-      # TODO: handle
-      unless @photos.present?
+      # handle empty instagram photos situation
+      unless instagram_response['data'].present?
+        @photos = {}
+      else
+        @photos = instagram_response['data']
       end
+      # get user info for profile pic and user name
+      @user_info = session[:user_info]
     rescue RestClient::ExceptionWithResponse => err
       err_response = err.response
       # If access_token expired
@@ -27,7 +30,6 @@ class MainsController < ApplicationController
   end
 
   def logout
-    redirect_to root_path unless user_access_token.present?
     reset_session
     redirect_to login_mains_path
   end
@@ -35,8 +37,9 @@ class MainsController < ApplicationController
   def auth_user
     # auth instagram login callbok
     if params['error'] || params['error_type']
-      # log failed 
+      # login failed 
       puts params['error']
+      flash[:notice] = "Instagram Sign in Failed."
     else
       # sotre code in session
       session[:instagram_code] = params['code']
@@ -56,8 +59,10 @@ class MainsController < ApplicationController
         session[:access_token] = response['access_token']
         session[:user_info] = response['user']
       rescue RestClient::ExceptionWithResponse => err
-        # auth failed 
+        # auth failed
         puts err
+        redirect_to login_mains_path, flash: {notice: "Instagram Auth Failed."}
+        return
       end
     end  
     redirect_to root_path

@@ -5,6 +5,8 @@ module MainsHelper
   end
 
   def show_instagram_photos(photo)
+    render 'You do not have any instagram photos.' if photo.empty?
+    
     case photo['type']
       # show video source
       when "video"
