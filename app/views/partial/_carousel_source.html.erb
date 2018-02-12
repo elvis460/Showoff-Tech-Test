@@ -1,0 +1,17 @@
+<div id="<%=source['created_time']%>" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner instagram-img">
+    <% source['carousel_media'].each_with_index do |image, index|%>
+        <div class="item <%= active_first_item(index)%>">
+          <img class="instagram-img" src="<%=image['images']['standard_resolution']['url']%>">
+        </div>
+    <%end%>
+  </div>
+  <a class="left carousel-control" href="#<%=source['created_time']%>" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#<%=source['created_time']%>" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

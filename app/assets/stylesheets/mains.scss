@@ -1,42 +1,69 @@
 // Place all the styles related to the mains controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.btn-instagram {
-	color: #fff;
-	background-color: #3f729b;
-	border-color: rgba(0,0,0,0.2);
+body.login{
+  background: url('https://image.freepik.com/free-psd/abstract-background-design_1297-87.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.login-wrap{
+.btn-instagram {
+  color: #fff;
+  background-color: #55ACEE;
+  border-color: rgba(0, 0, 0, 0.2);
+  transition: 0.9;
+  position: relative;
+  top:0; 
+  &:hover{
+    opacity: 0.9;
+    color: #fff !important;
+  }
+  &:active{
+    top:16px;
+    color: #fff !important;
+  }
+}
+
+.login-wrap {
   margin: 25vh auto 0;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   text-align: center;
 }
 
-.logo_img{
-	padding: 5%;
+.logo_img {
+  padding: 5%;
 }
 
-.nav-user-pic{
-	display: inline-block !important;
+.nav-user-pic {
+  display: inline-block !important;
 }
 
-.navbar-brand{
-	color: #000 !important;
-}
-.navbar-right{
-	float: right !important;
+.navbar-brand {
+  color: #000 !important;
 }
 
-.photo-group{
-	border-radius: 5%;
+.navbar-right {
+  float: right !important;
 }
 
-.instagram_img{
-  max-height:250px;
+.photo-group {
+  border-radius: 5%;
+}
+
+.text-center{
+  margin-top: 1%; 
+  height:250px; 
+  max-height: 250px;
+}
+
+.instagram-img {
+  max-height: 250px;
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 .dropdown-rwd {
