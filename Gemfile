@@ -43,7 +43,10 @@ gem "font-awesome-rails"
 gem 'jquery-rails'
 # rspec
 gem 'rspec-rails'
-
+# rails5 controller test required
+gem 'rails-controller-testing'
+# webmock/rspec
+gem 'webmock'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

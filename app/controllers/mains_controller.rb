@@ -13,13 +13,10 @@ class MainsController < ApplicationController
         @photos = instagram_response['data']
       end
       # get user info for profile pic and user name
-      @user_info = session[:user_info]
+      @user_info = user_info
     rescue RestClient::ExceptionWithResponse => err
-      err_response = err.response
-      # If access_token expired
-      if err_response['meta']['error_type'] == 'OAuthAccessTokenException'
-        redirect_to login_mains_path
-      end
+      puts err
+      redirect_to login_mains_path, flash: {notice: "Please Login Again."}
     end  
   end
 
